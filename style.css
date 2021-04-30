@@ -1,0 +1,88 @@
+* {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
+    "Helvetica Neue", "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji",
+    sans-serif;
+}
+
+body {
+  color: white;
+  margin: 3em;
+  line-height: 1.15;
+  /*background: url("https://source.unsplash.com/collection/1364150/1600x900")
+    no-repeat center center fixed;*/
+  background: url("https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fmohammad-alizade-62t_kKa2YlA-unsplash.webp?v=1619514934981")
+    no-repeat center center fixed;
+  background-size: cover;
+}
+
+main {
+}
+
+footer {
+  position: fixed;
+  bottom: 3em;
+  left: 3em;
+}
+
+#time,
+#weather {
+  display: block;
+  cursor: default;
+}
+
+#time {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+#weather {
+  font-size: 1.5rem;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+form {
+  font-size: 10px;
+}
+
+input {
+  padding: 10px;
+  margin: 20px 0;
+  border-radius: 8px;
+  font-size: 15px;
+  border: 2px solid white;
+  color: white;
+  background-color: transparent;
+  width: 250px;
+  outline: none;
+  transition: 0.5s;
+}
+
+::-webkit-input-placeholder {
+  color: white;
+}
+
+::-moz-placeholder {
+  color: white;
+}
+
+#bookmarks > a {
+  display: inline-block;
+  padding: 10.5px 12px;
+  margin: 0 5px;
+  border-radius: 8px;
+  background-color: white;
+  text-decoration: none;
+  transition: 0.5s;
+  color: black;
+}
+
+#bookmarks > a:hover {
+  background-color: lightgray;
+}
+
+#bookmarks > a > img {
+  display: inline-block;
+}
