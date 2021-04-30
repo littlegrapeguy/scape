@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>New Tab</title>
+    <link
+      rel="icon"
+      href="https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Foutline_add_circle_white_24dp.png?v=1619563758395"
+    />
+    <link
+      rel="shortcut icon"
+      href="https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Foutline_add_circle_white_24dp.png?v=1619563758395"
+    />
+    <link
+      rel="preload"
+      href="https://ipwhois.app/json/"
+      as="fetch"
+      crossorigin
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/inter.min.css"
+    />
+    <link rel="stylesheet" href="/weather.css" />
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/script.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <span id="time"></span>
+      <span id="weather">
+        <b><span id="temp">--°</span></b>
+        <i id="icon" class="wi wi-owm-800"></i>
+        <span id="type">---</span>
+      </span>
+      <form method="get" action="https://www.google.com/search" id="search">
+        <input
+          name="q"
+          type="text"
+          required
+          size="100"
+          placeholder="Search..."
+        />
+      </form>
+    </main>
+    <footer>
+      <div id="bookmarks"></div>
+    </footer>
+    <img id="color" />
+  </body>
+</html>
