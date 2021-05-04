@@ -1,0 +1,34 @@
+<style>
+  .popup > h2,
+  .popup > p {
+    margin: 10px;
+  }
+
+  .popup > span {
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+
+  .popup {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    width: 400px;
+    background-color: #e6c29e;
+    padding: 25px;
+    border-radius: 10px;
+  }
+</style>
+<div class="popup">
+  <span onclick="this.parentElement.parentElement.parentElement.remove();">✖</span>
+  <h2>Quick Tip!</h2>
+  <p>
+    To toggle features on and off or to change your search engine, right click
+    on the extension icon in the toolbar and select extension options. For more
+    information, visit:
+    <a href="https://help.gautaman.com">help.gautaman.com</a>. To get rid of
+    this notification reload the page.
+  </p>
+</div>

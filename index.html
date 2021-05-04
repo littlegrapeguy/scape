@@ -14,7 +14,7 @@
     />
     <link
       rel="preload"
-      href="https://ipwhois.app/json/"
+      href="https://ip2tz.isthe.link/"
       as="fetch"
       crossorigin
     />
@@ -28,13 +28,18 @@
   </head>
   <body>
     <main>
-      <span id="time"></span>
-      <span id="weather">
+      <span id="time" style="display: none"></span>
+      <span id="weather" style="display: none">
         <b><span id="temp">--°</span></b>
         <i id="icon" class="wi wi-owm-800"></i>
         <span id="type">---</span>
       </span>
-      <form method="get" action="https://www.google.com/search" id="search">
+      <form
+        method="get"
+        action="https://www.google.com/search"
+        id="search"
+        style="display: none"
+      >
         <input
           name="q"
           type="text"
@@ -45,8 +50,7 @@
       </form>
     </main>
     <footer>
-      <div id="bookmarks"></div>
+      <div id="bookmarks" style="display: none"></div>
     </footer>
-    <img id="color" />
   </body>
 </html>
