@@ -1,7 +1,7 @@
 const config = {
   style: {
     background:
-      "https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fken-cheung-KonWFWUaAuk-unsplash.jpg?v=1620121865175",
+      "https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fjellyfish.jpeg?v=1620110767517",
     round: false,
     css: ""
   },
