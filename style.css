@@ -7,11 +7,11 @@
 
 body {
   color: white;
-  margin: 3em;
+  margin: 4em;
   line-height: 1.15;
   /*background: url("https://source.unsplash.com/collection/1364150/1600x900")
     no-repeat center center fixed;*/
-  background: url("https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fmohammad-alizade-62t_kKa2YlA-unsplash.webp?v=1619514934981")
+  background: url("https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fken-cheung-KonWFWUaAuk-unsplash.jpg?v=1620121865175")
     no-repeat center center fixed;
   background-size: cover;
 }
@@ -21,8 +21,8 @@ main {
 
 footer {
   position: fixed;
-  bottom: 3em;
-  left: 3em;
+  bottom: 4em;
+  left: 4em;
 }
 
 #time,
@@ -32,7 +32,7 @@ footer {
 }
 
 #time {
-  font-size: 3rem;
+  font-size: 4.5rem;
   font-weight: 600;
   margin-bottom: 5px;
 }
@@ -50,7 +50,8 @@ form {
 input {
   padding: 10px;
   margin: 20px 0;
-  border-radius: 8px;
+  border-radius: 10px;
+  /*border-radius: 50%;*/
   font-size: 15px;
   border: 2px solid white;
   color: white;
@@ -58,6 +59,10 @@ input {
   width: 250px;
   outline: none;
   transition: 0.5s;
+}
+
+input:focus, input:hover {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 ::-webkit-input-placeholder {
@@ -72,15 +77,15 @@ input {
   display: inline-block;
   padding: 10.5px 12px;
   margin: 0 5px;
-  border-radius: 8px;
-  background-color: white;
+  /*border-radius: 50%;*/
+  border-radius: 10px;
+  background-color: rgba(225, 225, 255, 0.15);
   text-decoration: none;
   transition: 0.5s;
-  color: black;
 }
 
 #bookmarks > a:hover {
-  background-color: lightgray;
+  background-color: rgba(225, 225, 255, 0.3);
 }
 
 #bookmarks > a > img {
