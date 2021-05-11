@@ -9,4 +9,4 @@ Scape's weather is fast and accurate to make sure that you know what's waiting f
 ### Customisable
 Scape allows the user to customise their new tab page to their liking. For example, you can easily change the search engine in the options menu.
 
-> Made by [RemiixGrape Inc](https://rmxgrp.glitch.me) - (please don't visit our website :/)
+> Made by [RemiixGrape Inc](/)
