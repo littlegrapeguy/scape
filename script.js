@@ -1,8 +1,8 @@
 const config = {
   style: {
     background:
-      "https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fjellyfish.jpeg?v=1620110767517",
-    round: false,
+      "https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fjellyfish.jpeg",
+    circular: false,
     css: ""
   },
   modules: {
@@ -14,7 +14,7 @@ const config = {
     weather: {
       show: true,
       units: "metric",
-      location: false
+      location: false // add this
     },
     search: {
       show: false,
@@ -24,29 +24,51 @@ const config = {
     bookmarks: {
       show: true,
       items: [
-        "https://notion.so",
+        "https://google.com",
         "https://youtube.com",
         "https://mail.google.com"
       ]
     }
+  },
+  settings: {
+    timezone: false
   }
 };
 
+const body = document.querySelector("body");
+const style = document.querySelector("style");
+const time = document.getElementById("time");
+const weather = document.getElementById("weather");
+const icon = document.getElementById("icon");
+const type = document.getElementById("type");
+const temp = document.getElementById("temp");
+const search = document.getElementById("search");
+const input = search.elements.q;
+const bookmarks = document.getElementById("bookmarks");
+
 // Style
+body.style.background = `url("${config.style.background}") no-repeat center center fixed`;
+style.innerHTML = config.style.css;
+
+if (config.style.circular === true) {
+  search.setAttribute("class", "circle");
+  bookmarks.setAttribute("class", "circle");
+}
 
 // Time
 if (config.modules.time.show === true) {
-  const time = document.getElementById("time");
-
   time.style.display = "";
 
-  const options = config.modules.time["24hour"]
+  var options = config.modules.time["24hour"]
     ? { hour: "numeric", minute: "numeric", hour12: false }
     : {
         hour: "numeric",
         minute: "numeric",
         hour12: true
       };
+
+  if (config.settings.timezone !== false)
+    options.timeZone = config.settings.timezone;
 
   time.innerText = config.modules.time.ampm
     ? new Date().toLocaleString("en-GB", options)
@@ -61,11 +83,6 @@ if (config.modules.time.show === true) {
 
 // Weather
 if (config.modules.weather.show === true) {
-  const weather = document.getElementById("weather");
-  const icon = document.getElementById("icon");
-  const type = document.getElementById("type");
-  const temp = document.getElementById("temp");
-
   weather.style.display = "";
 
   const loadWeather = async function() {
@@ -87,9 +104,6 @@ if (config.modules.weather.show === true) {
 
 // Search
 if (config.modules.search.show === true) {
-  const search = document.getElementById("search");
-  const input = search.elements.q;
-
   search.style.display = "";
 
   const placeholders = [
@@ -119,8 +133,6 @@ if (config.modules.search.show === true) {
 
 // Bookmarks
 if (config.modules.bookmarks.show === true) {
-  const bookmarks = document.getElementById("bookmarks");
-
   bookmarks.style.display = "";
 
   config.modules.bookmarks.items.forEach(bookmark => {

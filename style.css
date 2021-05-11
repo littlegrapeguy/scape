@@ -9,8 +9,6 @@ body {
   color: white;
   margin: 4em;
   line-height: 1.15;
-  background: url("https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fjellyfish.jpeg?v=1620110767517")
-    no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -30,6 +28,7 @@ footer {
   font-size: 4.5rem;
   font-weight: 600;
   margin-bottom: 5px;
+  /*opacity: 0.9;*/
 }
 
 #weather {
@@ -56,7 +55,8 @@ input {
   transition: 0.5s;
 }
 
-input:focus, input:hover {
+input:focus,
+input:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
@@ -84,4 +84,12 @@ input:focus, input:hover {
 
 #bookmarks > a > img {
   display: inline-block;
+}
+
+#search.circle > input {
+  border-radius: 45px;
+}
+
+#bookmarks.circle > a {
+  border-radius: 50%;
 }
