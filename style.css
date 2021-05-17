@@ -9,7 +9,8 @@ body {
   color: white;
   margin: 4em;
   line-height: 1.15;
-  background-size: cover;
+  background-size: auto;
+  user-select: none;
 }
 
 footer {
@@ -28,7 +29,6 @@ footer {
   font-size: 4.5rem;
   font-weight: 600;
   margin-bottom: 5px;
-  /*opacity: 0.9;*/
 }
 
 #weather {
@@ -79,7 +79,7 @@ input:hover {
 }
 
 #bookmarks > a:hover {
-  background-color: rgba(225, 225, 255, 0.3);
+  background-color: rgba(225, 225, 255, 0.2);
 }
 
 #bookmarks > a > img {

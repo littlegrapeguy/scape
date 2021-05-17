@@ -1,7 +1,7 @@
 const config = {
   style: {
     background:
-      "https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fjellyfish.jpeg",
+      "https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fjellyfish.jpeg?v=1620110767517",
     circular: false,
     css: ""
   },
@@ -9,12 +9,12 @@ const config = {
     time: {
       show: true,
       "24hour": false,
-      ampm: true
+      ampm: false
     },
     weather: {
       show: true,
       units: "metric",
-      location: false // add this
+      location: false
     },
     search: {
       show: false,
@@ -140,8 +140,8 @@ if (config.modules.bookmarks.show === true) {
   <a href="${bookmark}">
     <img 
       src="https://favicon.splitbee.io/?url=${bookmark}"
-      width="20px"
-      height="20px"
+      width="22px"
+      height="22px"
     />
   </a>
   `;
