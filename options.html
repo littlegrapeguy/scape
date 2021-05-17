@@ -18,50 +18,37 @@
     <h1>
       🏝 Style
     </h1>
-    <div class="card">
+    <div class="card" id="background">
       <p>
         🌄 Background
       </p>
       <select>
-        <option>Default</option>
-        <option>Upload Image</option>
-        <option>Unsplash</option>
+        <option value="default">Default</option>
+        <option value="upload">Upload Image</option>
       </select>
     </div>
-    <div class="card">
+    <div class="card" id="ui-style">
       <p>
         📱 UI Style
       </p>
       <select>
-        <option>Round</option>
-        <option>Circular</option>
+        <option value="false">Round</option>
+        <option value="true">Circular</option>
       </select>
     </div>
-    <div class="card">
+    <div class="card" id="custom-css">
       <p>
         👨‍💻 Custom CSS
       </p>
       <textarea placeholder="Enter your custom CSS..."></textarea>
     </div>
-    <div class="card">
-      <p>
-        🔤 Font
-      </p>
-      <select>
-        <option>Inter</option>
-        <option>Poppins</option>
-        <option>Roboto</option>
-        <option>Cabin</option>
-        <option>Sans-serif</option>
-      </select>
-    </div>
     <h1>
       🎛 Modules
     </h1>
-    <div class="card">
-      <button class="show-hide">
+    <div class="card" id="time">
+      <button class="show-hide" state="true">
         <img
-          src="https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fvisibility_off_black_24dp-2.svg?v=1620715758254"
+          src="https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fvisibility_black_24dp-2.svg?v=1620715760754"
         />
       </button>
       <p>⏰ Time</p>
@@ -71,10 +58,10 @@
       <br />
       <input type="checkbox" name="ampm" /><span>Display AM / PM</span>
     </div>
-    <div class="card">
-      <button class="show-hide">
+    <div class="card" id="weather">
+      <button class="show-hide" state="true">
         <img
-          src="https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fvisibility_off_black_24dp-2.svg?v=1620715758254"
+          src="https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fvisibility_black_24dp-2.svg?v=1620715760754"
         />
       </button>
       <p>🌥 Weather</p>
@@ -90,10 +77,10 @@
       <br />
       <code>Coming soon...</code>
     </div>
-    <div class="card">
-      <button class="show-hide">
+    <div class="card" id="search">
+      <button class="show-hide" state="true">
         <img
-          src="https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fvisibility_off_black_24dp-2.svg?v=1620715758254"
+          src="https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fvisibility_black_24dp-2.svg?v=1620715760754"
         />
       </button>
       <p>🔎 Search</p>
@@ -109,39 +96,24 @@
       <span>Placeholder <span style="color: #B22323;">*optional</span></span>
       <input placeholder="Custom Placeholder" />
     </div>
-    <div class="card">
-      <button class="show-hide">
+    <div class="card" id="bookmarks">
+      <button class="show-hide" state="true">
         <img
-          src="https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fvisibility_off_black_24dp-2.svg?v=1620715758254"
+          src="https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fvisibility_black_24dp-2.svg?v=1620715760754"
         />
       </button>
       <p>📋 Bookmarks</p>
-      <input placeholder="New bookmark" type="url" /><button>
+      <input placeholder="New bookmark URL" type="url" /><button>
         Add
       </button>
-      <div class="in">
-        <button class="bloo">
-          Google
-        </button>
-      </div>
-      <div class="in">
-        <button class="bloo">
-          YouTube
-        </button>
-      </div>
-        <div class="in">
-        <button class="bloo">
-          Mail
-        </button>
-      </div>
     </div>
     <h1>
       ⚙️ Settings
     </h1>
-    <div class="card">
+    <div class="card" id="timezone">
       <p>🌐 Timezone</p>
       <select
-        ><option value="">Automatic</option
+        ><option value="false">Automatic</option
         ><option>Africa/Abidjan</option
         ><option>Africa/Accra</option
         ><option>Africa/Algiers</option

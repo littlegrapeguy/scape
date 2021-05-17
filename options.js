@@ -1,31 +1,89 @@
+// Dynamic Stuff
+document.addEventListener(
+  "click",
+  event => {
+    const element = event.target;
+
+    if (!element.matches(".show-hide") && !element.matches(".show-hide > img"))
+      return;
+
+    const button = element.parentElement.matches(".show-hide")
+      ? element.parentElement
+      : element;
+    const image = button.children[0];
+
+    const state = button.getAttribute("state");
+    const newState = state === "true" ? "false" : "true";
+
+    button.setAttribute("state", newState);
+
+    image.setAttribute(
+      "src",
+      newState === "true"
+        ? "https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fvisibility_black_24dp-2.svg?v=1620715760754"
+        : "https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fvisibility_off_black_24dp-2.svg?v=1620715758254"
+    );
+  },
+  false
+);
+
 // Save Options
 function save() {
   const config = {
     style: {
       background:
-        "https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fjellyfish.jpeg",
-      circular: false,
-      css: ""
+        document.querySelector("#background > input").value === "default"
+          ? "https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fjellyfish.jpeg"
+          : "",
+      circular:
+        document.querySelector("#ui-style > select").value === "true"
+          ? true
+          : false,
+      css: document.querySelector("#custom-css > textarea").value
     },
     modules: {
       time: {
-        show: true,
-        "24hour": false,
-        ampm: true
+        show:
+          document.querySelector("#time > .show-hide").getAttribute("state") ===
+          "true"
+            ? true
+            : false,
+        "24hour": document.querySelector("#time > input[type=radio]").checked
+          ? false
+          : true,
+        ampm: document.querySelector("#time > input[type=checkbox]").checked
       },
       weather: {
-        show: true,
-        units: "metric",
-        location: false // add this
+        show:
+          document
+            .querySelector("#weather > .show-hide")
+            .getAttribute("state") === "true"
+            ? true
+            : false,
+        units: document.querySelector("#weather > select").value,
+        location: false // do this pls
       },
       search: {
-        show: false,
-        engine: "https://www.google.com/search",
-        placeholder: false
+        show:
+          document
+            .querySelector("#search > .show-hide")
+            .getAttribute("state") === "true"
+            ? true
+            : false,
+        engine: document.querySelector("#search > select").value,
+        placeholder: document.querySelector("#search > select").value
+          ? document.querySelector("#search > select").value
+          : false
       },
       bookmarks: {
-        show: true,
+        show:
+          document
+            .querySelector("#bookmarks > .show-hide")
+            .getAttribute("state") === "true"
+            ? true
+            : false,
         items: [
+          // do this pls
           "https://google.com",
           "https://youtube.com",
           "https://mail.google.com"
@@ -33,7 +91,10 @@ function save() {
       }
     },
     settings: {
-      timezone: false
+      timezone:
+        document.querySelector("#timezone > select").value === "false"
+          ? false
+          : document.querySelector("#timezone > select").value
     }
   };
 
@@ -58,12 +119,12 @@ function restore() {
       time: {
         show: true,
         "24hour": false,
-        ampm: true
+        ampm: false
       },
       weather: {
         show: true,
         units: "metric",
-        location: false // add this
+        location: false
       },
       search: {
         show: false,
@@ -83,6 +144,7 @@ function restore() {
       timezone: false
     }
   };
+
   chrome.storage.sync.get(config, items => {
     document.getElementById("engine").value = items.engine;
   });
