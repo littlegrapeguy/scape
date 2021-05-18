@@ -45,7 +45,8 @@ select {
   margin: 5px 0;
 }
 
-input[type="checkbox"], input[type="radio"] {
+input[type="checkbox"],
+input[type="radio"] {
   margin: 0 5px 0 0;
 }
 
@@ -56,6 +57,25 @@ input[type="checkbox"], input[type="radio"] {
   position: fixed;
   bottom: 10px;
   right: 10px;
+}
+
+.bookmark {
+  background-color: #EFEFEF;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 5px 0;
+}
+
+.bookmark span {
+  cursor: pointer;
+}
+
+#bookmarks input {
+  display: inline-block;
+}
+
+#bookmarks button {
+  margin: 5px 0;
 }
 
 #save {

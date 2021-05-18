@@ -8,8 +8,8 @@
   },
   "icons": {
     "128": "128.png",
-    "16": "16.png",
-    "48": "48.png"
+    "48": "48.png",
+    "16": "16.png"
   },
   "options_ui": {
     "open_in_tab": false,
