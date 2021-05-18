@@ -9,8 +9,10 @@ body {
   color: white;
   margin: 4em;
   line-height: 1.15;
-  background-size: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
   user-select: none;
+  -webkit-user-select: none;
 }
 
 footer {
@@ -45,7 +47,6 @@ input {
   padding: 10px;
   margin: 20px 0;
   border-radius: 10px;
-  /*border-radius: 50%;*/
   font-size: 15px;
   border: 2px solid white;
   color: white;

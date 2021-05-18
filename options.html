@@ -9,7 +9,7 @@
     />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css"
+      href="/water.css"
     />
     <link rel="stylesheet" href="/options.css" />
     <script src="/options.js" defer></script>
@@ -103,9 +103,13 @@
         />
       </button>
       <p>📋 Bookmarks</p>
-      <input placeholder="New bookmark URL" type="url" /><button>
-        Add
-      </button>
+      <form>
+        <input placeholder="New bookmark URL" type="url" name="url" required />
+        <button type="submit" >Add</button>
+      </form>
+      <div>
+        
+      </div>
     </div>
     <h1>
       ⚙️ Settings

@@ -1,4 +1,4 @@
-// Dynamic Stuff
+// Show / Hide Buttons
 document.addEventListener(
   "click",
   event => {
@@ -27,13 +27,31 @@ document.addEventListener(
   false
 );
 
+// Bookmarks Adding
+const form = document.querySelector("#bookmarks > form");
+
+form.addEventListener("submit", event => {
+  event.preventDefault();
+
+  document.querySelector(
+    "#bookmarks > div"
+  ).innerHTML += `<div class="bookmark">${form.elements.url.value} <span onclick="this.parentElement.remove()">✖</span></div>`;
+
+  form.reset();
+  form.elements.url.focus();
+});
+
 // Save Options
 function save() {
+  let bookmarks = [];
+  document
+    .querySelectorAll("#bookmarks > div > .bookmark")
+    .forEach(element => bookmarks.push(element.innerText));
   const config = {
     style: {
       background:
-        document.querySelector("#background > input").value === "default"
-          ? "https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fjellyfish.jpeg"
+        document.querySelector("#background > select").value === "default"
+          ? "https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fwallpapersden.com_minimalist-landscape-painting_1920x1080.jpg?v=1621298437241"
           : "",
       circular:
         document.querySelector("#ui-style > select").value === "true"
@@ -82,12 +100,7 @@ function save() {
             .getAttribute("state") === "true"
             ? true
             : false,
-        items: [
-          // do this pls
-          "https://google.com",
-          "https://youtube.com",
-          "https://mail.google.com"
-        ]
+        items: bookmarks
       }
     },
     settings: {
@@ -99,9 +112,9 @@ function save() {
   };
 
   chrome.storage.sync.set(config, () => {
-    document.getElementById("save").textContent = "Saved!";
+    document.getElementById("save").innerText = "Saved!";
     setTimeout(() => {
-      document.getElementById("save").textContent = "Save";
+      document.getElementById("save").innerText = "Save";
     }, 750);
   });
 }
@@ -111,7 +124,7 @@ function restore() {
   const config = {
     style: {
       background:
-        "https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fjellyfish.jpeg",
+        "https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fwallpapersden.com_minimalist-landscape-painting_1920x1080.jpg?v=1621298437241",
       circular: false,
       css: ""
     },
@@ -146,7 +159,67 @@ function restore() {
   };
 
   chrome.storage.sync.get(config, items => {
-    document.getElementById("engine").value = items.engine;
+    // Background
+
+    // UI Style
+    document.querySelector(
+      "#ui-style > select"
+    ).value = items.style.circular.toString();
+
+    // Custom CSS
+    document.querySelector("#custom-css > textarea").value = items.style.css;
+
+    // Time
+    document
+      .querySelector("#time > .show-hide")
+      .setAttribute("state", items.modules.time.show);
+
+    items.modules.time["24hr"]
+      ? (document.querySelectorAll(
+          "#time > input[type=radio]"
+        )[1].checked = true)
+      : (document.querySelectorAll(
+          "#time > input[type=radio]"
+        )[0].checked = true);
+
+    document.querySelector("#time > input[type=checkbox]").checked =
+      items.modules.time.ampm;
+
+    // Weather
+    document
+      .querySelector("#weather > .show-hide")
+      .setAttribute("state", items.modules.weather.show);
+
+    document.querySelector("#weather > select").value =
+      items.modules.weather.units;
+
+    // Search
+    document
+      .querySelector("#search > .show-hide")
+      .setAttribute("state", items.modules.search.show);
+
+    document.querySelector("#search > select").value =
+      items.modules.search.engine;
+
+    document.querySelector("#search > input").value = items.modules.search
+      .placeholder
+      ? items.modules.search.placeholder
+      : "";
+
+    // Bookmarks
+    document
+      .querySelector("#bookmarks > .show-hide")
+      .setAttribute("state", items.modules.bookmarks.show);
+
+    items.modules.bookmarks.items.forEach(url => {
+      document.querySelector(
+        "#bookmarks > div"
+      ).innerHTML += `<div class="bookmark">${url} <span onclick="this.parentElement.remove()">✖</span></div>`;
+    });
+
+    // Timezone
+    document.querySelector("#timezone > select").value =
+      items.settings.timezone;
   });
 }
 
