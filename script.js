@@ -1,7 +1,7 @@
 const config = {
   style: {
     background:
-      "https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fwallpapersden.com_minimalist-landscape-painting_1920x1080.jpg?v=1621298437241",
+      "https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fredpanda.jpeg?v=1622936997670",
     circular: false,
     css: ""
   },
@@ -17,12 +17,12 @@ const config = {
       location: false
     },
     search: {
-      show: false,
+      show: true,
       engine: "https://www.google.com/search",
       placeholder: false
     },
     bookmarks: {
-      show: true,
+      show: false,
       items: [
         "https://google.com",
         "https://youtube.com",
@@ -107,7 +107,7 @@ if (config.modules.search.show === true) {
   search.style.display = "";
 
   const placeholders = [
-    "What is the weather?",
+    "Weather? Look up!",
     "How tall is the empire state building?",
     "Why is the sky blue?",
     "How much is Bitcoin worth?",

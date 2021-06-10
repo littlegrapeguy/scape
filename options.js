@@ -28,18 +28,37 @@ document.addEventListener(
 );
 
 // Bookmarks Adding
-const form = document.querySelector("#bookmarks > form");
+const bookmarksForm = document.querySelector("#bookmarks > form");
 
-form.addEventListener("submit", event => {
+bookmarksForm.addEventListener("submit", event => {
   event.preventDefault();
 
   document.querySelector(
     "#bookmarks > div"
-  ).innerHTML += `<div class="bookmark">${form.elements.url.value} <span onclick="this.parentElement.remove()">✖</span></div>`;
+  ).innerHTML += `<div class="bookmark">${bookmarksForm.elements.url.value} <span onclick="this.parentElement.remove()">✖</span></div>`;
 
-  form.reset();
-  form.elements.url.focus();
+  bookmarksForm.reset();
+  bookmarksForm.elements.url.focus();
 });
+
+// Location Settting
+/*const locationForm = document.querySelector("#weather > form");
+
+locationForm.addEventListener("submit", async event => {
+  event.preventDefault();
+
+  const valid = !locationForm.elements.location.value
+    ? true
+    : (await (await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lang=EN&q=${locationForm.elements.location.value}&units=metric&appid=8e586fc94a1f3326672f6733aa38fd55`
+      )).json().cod) == 200;
+
+  if ("bad") {
+    locationForm.reset();
+    locationForm.elements.location.focus();
+  } else {
+  }
+});*/
 
 // Save Options
 function save() {
@@ -51,7 +70,7 @@ function save() {
     style: {
       background:
         document.querySelector("#background > select").value === "default"
-          ? "https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fwallpapersden.com_minimalist-landscape-painting_1920x1080.jpg?v=1621298437241"
+          ? "https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fjellyfish.jpeg?v=1620110767517"
           : "",
       circular:
         document.querySelector("#ui-style > select").value === "true"
@@ -124,7 +143,7 @@ function restore() {
   const config = {
     style: {
       background:
-        "https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fwallpapersden.com_minimalist-landscape-painting_1920x1080.jpg?v=1621298437241",
+        "https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fjellyfish.jpeg?v=1620110767517",
       circular: false,
       css: ""
     },

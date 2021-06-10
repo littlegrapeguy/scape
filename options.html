@@ -7,10 +7,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/inter.min.css"
     />
-    <link
-      rel="stylesheet"
-      href="/water.css"
-    />
+    <link rel="stylesheet" href="/water.css" />
     <link rel="stylesheet" href="/options.css" />
     <script src="/options.js" defer></script>
   </head>
@@ -22,6 +19,9 @@
       <p>
         🌄 Background
       </p>
+      <span>
+        * For best results, use an image that is 1920 x 1080 resolution.
+      </span>
       <select>
         <option value="default">Default</option>
         <option value="upload">Upload Image</option>
@@ -72,10 +72,13 @@
         <option value="standard">Kelvin</option>
       </select>
       <span>
-        Location
+        Location <span style="color: #B22323;">*optional</span>
       </span>
       <br />
-      <code>Coming soon...</code>
+      <form>
+        <input placeholder="City Name" type="text" name="location" location="" />
+        <button type="submit">Save Location</button>
+      </form>
     </div>
     <div class="card" id="search">
       <button class="show-hide" state="true">
@@ -105,11 +108,9 @@
       <p>📋 Bookmarks</p>
       <form>
         <input placeholder="New bookmark URL" type="url" name="url" required />
-        <button type="submit" >Add</button>
+        <button type="submit">Add</button>
       </form>
-      <div>
-        
-      </div>
+      <div></div>
     </div>
     <h1>
       ⚙️ Settings
