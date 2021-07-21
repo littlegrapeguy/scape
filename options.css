@@ -70,11 +70,11 @@ input[type="radio"] {
   cursor: pointer;
 }
 
-#bookmarks input {
+#bookmarks input, #weather input {
   display: inline-block;
 }
 
-#bookmarks button {
+#bookmarks button, #weather button {
   margin: 5px 0;
 }
 

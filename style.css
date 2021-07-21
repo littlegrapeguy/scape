@@ -10,6 +10,7 @@ body {
   margin: 4em;
   line-height: 1.15;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: cover;
   user-select: none;
   -webkit-user-select: none;
@@ -37,6 +38,14 @@ footer {
   font-size: 1.5rem;
   font-weight: 400;
   opacity: 0.8;
+}
+
+noscript > p {
+  color: black;
+}
+
+.javascript {
+  color: red;
 }
 
 form {
