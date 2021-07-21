@@ -11,7 +11,7 @@ body {
   line-height: 1.15;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: auto;
+  background-size: cover;
   user-select: none;
   -webkit-user-select: none;
 }
@@ -103,5 +103,3 @@ input:hover {
 #bookmarks.circle > a {
   border-radius: 50%;
 }
-
-
