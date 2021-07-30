@@ -1,4 +1,4 @@
-* {
+    * {
   font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
     "Helvetica Neue", "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji",
@@ -102,4 +102,24 @@ input:hover {
 
 #bookmarks.circle > a {
   border-radius: 50%;
+}
+
+.settings {
+  position: fixed;
+  bottom: 4em;
+  right: 4em;
+  width: 20px;
+  opacity: 0;
+  transition: 0.3s;
+  padding-left: 200px;
+  padding-top: 300px;
+}
+
+.settings:hover {
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.point:hover {
+  cursor: pointer;
 }
