@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Scape",
   "description": "Your new, new, new tab page.",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
@@ -14,10 +14,6 @@
   "options_ui": {
     "open_in_tab": false,
     "page": "options.html"
-  },
-  "background": {
-    "scripts": ["icon.js"],
-    "persistent": false
   },
   "permissions": ["storage"]
 }
