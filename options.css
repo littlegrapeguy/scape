@@ -60,7 +60,7 @@ input[type="radio"] {
 }
 
 .bookmark {
-  background-color: #EFEFEF;
+  background-color: #efefef;
   border-radius: 8px;
   padding: 10px;
   margin: 5px 0;
@@ -70,11 +70,13 @@ input[type="radio"] {
   cursor: pointer;
 }
 
-#bookmarks input, #weather input {
+#bookmarks input,
+#weather input {
   display: inline-block;
 }
 
-#bookmarks button, #weather button {
+#bookmarks button,
+#weather button {
   margin: 5px 0;
 }
 
