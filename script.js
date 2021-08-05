@@ -1,39 +1,40 @@
 const defaults = {
   style: {
-    background: "https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Ffirewatch-nature-m1-1920x1080.jpeg",
+    background:
+      "https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Ffirewatch-nature-m1-1920x1080.jpeg",
     circular: false,
-    css: ""
+    css: "",
   },
   modules: {
     time: {
       show: true,
       "24hour": true,
-      ampm: false
+      ampm: false,
     },
     weather: {
       show: true,
-      units: "metric"
+      units: "metric",
     },
     search: {
       show: true,
       engine: "https://www.google.com/search",
-      placeholder: false
+      placeholder: false,
     },
     bookmarks: {
-      show: false,
+      show: true,
       items: [
         "https://google.com",
         "https://youtube.com",
-        "https://mail.google.com"
-      ]
-    }
+        "https://mail.google.com",
+      ],
+    },
   },
   settings: {
-    timezone: false
-  }
+    timezone: false,
+  },
 };
 
-chrome.storage.sync.get(defaults, config => {
+chrome.storage.sync.get(defaults, (config) => {
   const body = document.querySelector("body");
   const style = document.querySelector("style");
   const time = document.getElementById("time");
@@ -46,7 +47,10 @@ chrome.storage.sync.get(defaults, config => {
   const bookmarks = document.getElementById("bookmarks");
 
   // Style
-  body.style.background = `url("${config.style.background}") no-repeat center center fixed`;
+  body.style.background = `url("${config.style.background === 'https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Ffirewatch-nature-m1-1920x1080.jpeg' ? '/bg.jpeg' : config.style.background}") no-repeat center fixed`;
+  body.style.backgroundSize = `cover`
+  body.style.backgroundPosition = `center`
+  body.style.height = `100%`
   style.innerHTML = config.style.css;
 
   if (config.style.circular === true) {
@@ -63,7 +67,7 @@ chrome.storage.sync.get(defaults, config => {
       : {
           hour: "numeric",
           minute: "numeric",
-          hour12: true
+          hour12: true,
         };
 
     if (config.settings.timezone !== false)
@@ -84,14 +88,16 @@ chrome.storage.sync.get(defaults, config => {
   if (config.modules.weather.show === true) {
     weather.style.display = "";
 
-    const loadWeather = async function() {
+    const loadWeather = async function () {
       const location = await (await fetch("https://ip2tz.isthe.link/")).json();
 
       var units = config.modules.weather.units;
 
-      const weatherData = await (await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lang=EN&lat=${location.latitude}&lon=${location.longitude}&units=${units}&appid=8e586fc94a1f3326672f6733aa38fd55`
-      )).json();
+      const weatherData = await (
+        await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?lang=EN&lat=${location.latitude}&lon=${location.longitude}&units=${units}&appid=8e586fc94a1f3326672f6733aa38fd55`
+        )
+      ).json();
 
       icon.setAttribute("class", "wi wi-owm-" + weatherData.weather[0].id);
       type.innerText = weatherData.weather[0].main;
@@ -106,18 +112,52 @@ chrome.storage.sync.get(defaults, config => {
     search.style.display = "";
 
     const placeholders = [
-      "Weather? Look up!",
-      "How tall is the empire state building?",
+      "What is my IP?",
+      "What is the time?",
+      "What is the weather?",
+      "How do I vote?",
+      "How do I tie a tie?",
+      "What song is this?",
+      "When is mother's day?",
+      "How to take a screenshot.",
+      "How do I make money?",
+      "How do I spell?",
+      "How do I make French Toast?",
+      "When is labor day?",
       "Why is the sky blue?",
-      "How much is Bitcoin worth?",
-      "What is the internet?",
-      "What is Elon Musk's net worth?",
-      "What's my IP?",
-      "What time is it in Beijing?",
-      "How old is Joe Biden?",
-      "What is Reddit?",
-      "What is COVID-19?",
-      "How to code"
+      "What does 'lol' mean?",
+      "What is a verb?",
+      "Why am I bored?",
+      "How do I boil an egg?",
+      "What do I watch?",
+      "What is global warming?",
+      "What is a meme?",
+      "Who unfollowed me?",
+      "How do I learn English?",
+      "How do I code?",
+      "Who invented the internet?",
+      "How do I make guacamole?",
+      "How do I French braid?",
+      "How do I make cookies?",
+      "How old is Selena Gomez?",
+      "How much water should I drink?",
+      "How do I clear cache?",
+      "How do I draw?",
+      "How to write a book?",
+      "How to cook bacon?",
+      "Why do we yawn?",
+      "How do I sell on eBay?",
+      "How do I make Mac 'n' Cheese?",
+      "Who invented the light bulb?",
+      "What does 🙌 mean?",
+      "How do I tie a scarf?",
+      "When are the Oscars?",
+      "What is a computer?",
+      "How to play UNO?",
+      "What is a CV?",
+      "How do I install Windows?",
+      "Can you see me?",
+      "Hint: hover on the bottom right"
     ];
     const placeholder =
       placeholders[Math.floor(Math.random() * placeholders.length)];
@@ -134,7 +174,7 @@ chrome.storage.sync.get(defaults, config => {
   if (config.modules.bookmarks.show === true) {
     bookmarks.style.display = "";
 
-    config.modules.bookmarks.items.forEach(bookmark => {
+    config.modules.bookmarks.items.forEach((bookmark) => {
       bookmarks.innerHTML += `
     <a href="${bookmark}">
       <img
