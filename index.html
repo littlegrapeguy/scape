@@ -35,17 +35,18 @@
           app.
         </p></noscript
       >
-      <span id="time" style="display: none"></span>
-      <span id="weather" style="display: none">
+      <span id="time" style="display: none;"></span>
+      <span id="weather" style="display: none;">
         <b><span id="temp">--°</span></b>
         <i id="icon" class="wi wi-owm-800"></i>
         <span id="type">---</span>
       </span>
       <form
+        autocomplete="off"
         method="get"
         action="https://www.google.com/search"
         id="search"
-        style="display: none"
+        style="display: none;"
       >
         <input
           name="q"
@@ -57,7 +58,10 @@
       </form>
     </main>
     <footer>
-      <div id="bookmarks" style="display: none"></div>
+      <div id="bookmarks" style="display: none;"></div>
     </footer>
-  </body>
+    <div class="settings">
+    <a class="no" href="/options.html" target="_blank"><img class="point" src="https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Fsettings.svg?v=1627606096150"
+    ></a></div>
+    </body>
 </html>
