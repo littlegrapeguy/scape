@@ -34,7 +34,7 @@ function restore() {
         placeholder: false
       },
       bookmarks: {
-        show: false,
+        show: true,
         items: [
           "https://google.com",
           "https://youtube.com",
