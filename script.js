@@ -123,7 +123,7 @@ chrome.storage.sync.get(defaults, (config) => {
       "How do I make money?",
       "How do I spell?",
       "How do I make French Toast?",
-      "When is labor day?",
+      "When is Labor Day?",
       "Why is the sky blue?",
       "What does 'lol' mean?",
       "What is a verb?",
@@ -137,7 +137,7 @@ chrome.storage.sync.get(defaults, (config) => {
       "How do I code?",
       "Who invented the internet?",
       "How do I make guacamole?",
-      "How do I French braid?",
+      "How do I French Braid?",
       "How do I make cookies?",
       "How old is Selena Gomez?",
       "How much water should I drink?",
@@ -171,9 +171,9 @@ chrome.storage.sync.get(defaults, (config) => {
   }
 
   // Bookmarks
-  if (config.modules.bookmarks.show === true) {
+  if (config.modules.bookmarks.show === true && config.modules.bookmarks.items != 0) {
     bookmarks.style.display = "";
-
+    
     config.modules.bookmarks.items.forEach((bookmark) => {
       bookmarks.innerHTML += `
     <a href="${bookmark}">
