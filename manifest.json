@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "Scape",
-  "description": "Your new, new, new tab page.",
-  "version": "2.1.0",
+  "description": "Give your browser the fresh coat of paint it deserves!",
+  "version": "2.1.1",
   "chrome_url_overrides": {
     "newtab": "index.html"
   },

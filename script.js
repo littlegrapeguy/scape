@@ -90,12 +90,15 @@ chrome.storage.sync.get(defaults, (config) => {
       options.timeZone = config.settings.timezone;
 
     function loadTime() {
-      time.innerText = config.modules.time.ampm
-        ? new Date().toLocaleString("en-GB", options).replace("0:", "12:")
+      var newTime = config.modules.time.ampm
+        ? new Date().toLocaleString("en-GB", options)
         : new Date()
             .toLocaleString("en-GB", options)
             .replace(/am|pm| /gi, "")
-            .replace("0:", "12:");
+            
+      if (newTime.indexOf("0:") === 0) newTime.replace("0:", "12:")
+      
+      time.innerText = newTime;
     }
     
     loadTime();
