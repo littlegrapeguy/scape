@@ -25,3 +25,5 @@ Some of the core features:
   Chromium based browser you can still install Scape.
 
 Made by littlegrapeguy and RemiixInc.
+
+<img alt="Chrome Web Store" src="https://img.shields.io/chrome-web-store/stars/dkldckkbeofieloldnockglgblnfhinj?color=%23e9d4ff&label=STORE%20RATING&style=for-the-badge"> <img alt="Chrome Web Store" src="https://img.shields.io/chrome-web-store/users/dkldckkbeofieloldnockglgblnfhinj?color=%23e9d4ff&label=ACTIVE%20USERS&style=for-the-badge">
