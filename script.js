@@ -2,6 +2,7 @@ const defaults = {
   style: {
     background:
       "https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Ffirewatch-nature-m1-1920x1080.jpeg",
+    foreground: "#FFFFFF",
     circular: false,
     css: "",
   },
@@ -47,11 +48,26 @@ chrome.storage.sync.get(defaults, (config) => {
   const bookmarks = document.getElementById("bookmarks");
 
   // Style
-  body.style.background = `url("${config.style.background === 'https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Ffirewatch-nature-m1-1920x1080.jpeg' ? '/bg.jpeg' : config.style.background}") no-repeat center fixed`;
-  body.style.backgroundSize = `cover`
-  body.style.backgroundPosition = `center`
-  body.style.height = `100%`
-  style.innerHTML = config.style.css;
+  body.style.background = `url("${
+    config.style.background ===
+    "https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Ffirewatch-nature-m1-1920x1080.jpeg"
+      ? "/bg.jpeg"
+      : config.style.background
+  }") no-repeat center fixed`;
+  body.style.backgroundSize = `cover`;
+  body.style.backgroundPosition = `center`;
+  body.style.height = `100%`;
+  const booka = convertToRGB(config.style.foreground);
+  const bookb = convertToRGB(config.style.foreground);
+  booka.push(0.15);
+  bookb.push(0.2);
+  style.innerHTML =
+    `:root { --color: ${config.style.foreground}; --booka: rgba(${booka.join(
+      ", "
+    )}); bookb: rgba(${bookb.join(", ")}); }` + config.style.css;
+  document
+    .getElementById("point")
+    .setAttribute("stroke", config.style.foreground);
 
   if (config.style.circular === true) {
     search.setAttribute("class", "circle");
@@ -73,38 +89,47 @@ chrome.storage.sync.get(defaults, (config) => {
     if (config.settings.timezone !== false)
       options.timeZone = config.settings.timezone;
 
-    time.innerText = config.modules.time.ampm
-      ? new Date().toLocaleString("en-GB", options)
-      : new Date().toLocaleString("en-GB", options).replace(/am|pm| /gi, "");
-
-    setInterval(() => {
+    function loadTime() {
       time.innerText = config.modules.time.ampm
-        ? new Date().toLocaleString("en-GB", options)
-        : new Date().toLocaleString("en-GB", options).replace(/am|pm| /gi, "");
-    }, 1000);
+        ? new Date().toLocaleString("en-GB", options).replace("0:", "12:")
+        : new Date()
+            .toLocaleString("en-GB", options)
+            .replace(/am|pm| /gi, "")
+            .replace("0:", "12:");
+    }
+    
+    loadTime();
+
+    setInterval(loadTime, 1000);
   }
 
   // Weather
   if (config.modules.weather.show === true) {
     weather.style.display = "";
-
-    const loadWeather = async function () {
-      const location = await (await fetch("https://ip2tz.isthe.link/")).json();
-
-      var units = config.modules.weather.units;
-
-      const weatherData = await (
-        await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?lang=EN&lat=${location.latitude}&lon=${location.longitude}&units=${units}&appid=8e586fc94a1f3326672f6733aa38fd55`
-        )
-      ).json();
-
-      icon.setAttribute("class", "wi wi-owm-" + weatherData.weather[0].id);
-      type.innerText = weatherData.weather[0].main;
-      temp.innerText = Math.round(weatherData.main.temp) + "°";
-    };
-
-    loadWeather();
+    function loadWeather() {
+      navigator.geolocation.getCurrentPosition(
+        function (location) {
+          var units = config.modules.weather.units;
+          fetch(
+            `https://api.openweathermap.org/data/2.5/weather?lang=EN&lat=${location.coords.latitude}&lon=${location.coords.longitude}&units=${units}&appid=8e586fc94a1f3326672f6733aa38fd55`
+          )
+            .then((response) => response.json())
+            .then((weatherData) => {
+              icon.setAttribute(
+                "class",
+                "wi wi-owm-" + weatherData.weather[0].id
+              );
+              type.innerText = weatherData.weather[0].main;
+              temp.innerText = Math.round(weatherData.main.temp) + "°";
+            });
+        },
+        function (error) { console.log(error) }
+      );
+    }
+    
+    loadWeather()
+    
+    setInterval(loadWeather, 300000);
   }
 
   // Search
@@ -129,7 +154,7 @@ chrome.storage.sync.get(defaults, (config) => {
       "What is a verb?",
       "Why am I bored?",
       "How do I boil an egg?",
-      "What do I watch?",
+      "What should I watch?",
       "What is global warming?",
       "What is a meme?",
       "Who unfollowed me?",
@@ -157,7 +182,7 @@ chrome.storage.sync.get(defaults, (config) => {
       "What is a CV?",
       "How do I install Windows?",
       "Can you see me?",
-      "Hint: hover on the bottom right"
+      "Hint: hover on the bottom right",
     ];
     const placeholder =
       placeholders[Math.floor(Math.random() * placeholders.length)];
@@ -171,9 +196,12 @@ chrome.storage.sync.get(defaults, (config) => {
   }
 
   // Bookmarks
-  if (config.modules.bookmarks.show === true && config.modules.bookmarks.items != 0) {
+  if (
+    config.modules.bookmarks.show === true &&
+    config.modules.bookmarks.items != 0
+  ) {
     bookmarks.style.display = "";
-    
+
     config.modules.bookmarks.items.forEach((bookmark) => {
       bookmarks.innerHTML += `
     <a href="${bookmark}">
@@ -187,3 +215,28 @@ chrome.storage.sync.get(defaults, (config) => {
     });
   }
 });
+
+// Convert to RGB
+function convertToRGB(hex) {
+  hex = hex.replace(/#/g, "");
+  if (hex.length === 3) {
+    hex = hex
+      .split("")
+      .map(function (hex) {
+        return hex + hex;
+      })
+      .join("");
+  }
+  // validate hex format
+  var result = /^([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})[\da-z]{0,0}$/i.exec(hex);
+  if (result) {
+    var red = parseInt(result[1], 16);
+    var green = parseInt(result[2], 16);
+    var blue = parseInt(result[3], 16);
+
+    return [red, green, blue];
+  } else {
+    // invalid color
+    return null;
+  }
+}

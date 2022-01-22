@@ -1,13 +1,16 @@
+const reg = /^#([0-9a-f]{3}){1,2}$/i;
+
 // Save Options
 function save() {
   const config = {
     style: {
-      background: document.querySelector("#background > input").value ? document.querySelector("#background > input").value : "https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Ffirewatch-nature-m1-1920x1080.jpeg",
+      background: document.querySelector("#background input").value ? document.querySelector("#background input").value : "https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Ffirewatch-nature-m1-1920x1080.jpeg",
+      foreground: reg.test(document.querySelector("#foreground input").value) ? document.querySelector("#foreground input").value : "#FFFFFF",
       circular:
-        document.querySelector("#ui-style > select").value === "true"
+        document.querySelector("#ui-style select").value === "true"
           ? true
           : false,
-      css: document.querySelector("#custom-css > textarea").value
+      css: document.querySelector("#custom-css textarea").value
     },
     modules: {
       time: {
@@ -56,6 +59,7 @@ function restore() {
   const defaults = {
     style: {
       background: "https://cdn.glitch.com/fbcc75ee-28e3-462b-9d78-8dd9e7264ccd%2Ffirewatch-nature-m1-1920x1080.jpeg",
+      foreground: "#FFFFFF",
       circular: false,
       css: ""
     },
@@ -91,6 +95,9 @@ function restore() {
   chrome.storage.sync.get(defaults, config => {
     // Background
     document.querySelector("#background input").value = config.style.background
+    
+    // Foreground
+    document.querySelector("#foreground input").value = config.style.foreground
     
     // UI Style
     document.querySelector(
@@ -141,6 +148,11 @@ function restore() {
       config.settings.timezone;
   });
 }
+
+// CTRL + S Keyboard Shortcut
+document.addEventListener('keyup', function (event) {
+    if (event.ctrlKey && event.key === 's') save()
+});
 
 // Run Code
 document.addEventListener("DOMContentLoaded", restore);
