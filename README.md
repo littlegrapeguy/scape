@@ -8,6 +8,8 @@
   <a href="https://microsoftedge.microsoft.com/addons/detail/scape/ldbknaohjphmlhlfjdhnaiedkgfamfcj"><img src="https://user-images.githubusercontent.com/585534/107280673-a5ece780-6a26-11eb-9cc7-9fa9f9f81180.png" alt="Get Scape for Microsoft Edge"></a>
 </p>
 
+<img width="696" alt="Screen Shot" src="https://user-images.githubusercontent.com/39117916/150661989-9441206b-2d09-48a1-9652-e7160bb69167.png">
+
 Some of the core features:
 - Free and Open Source
 Scape is open-source software, which means that the source code is available to anyone. You can find the source code on GitHub. Scape is also a completely free extension.
