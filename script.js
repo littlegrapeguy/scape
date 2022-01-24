@@ -96,9 +96,11 @@ chrome.storage.sync.get(defaults, (config) => {
             .toLocaleString("en-GB", options)
             .replace(/am|pm| /gi, "")
             
-      if (newTime.indexOf("0:") === 0) newTime.replace("0:", "12:")
-      
-      time.innerText = newTime;
+      if (newTime.indexOf("0:") === 0) {
+          time.innerText = newTime.replace("0:", "12:");
+      } else {
+          time.innerText = newTime;
+      }
     }
     
     loadTime();
